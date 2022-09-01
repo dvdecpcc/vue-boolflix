@@ -30,7 +30,7 @@ export default {
     },
     data(){
         return {
-            langFlags: ['it', 'en', 'fr', 'de', 'nl', 'es', 'jp', 'ch', 'por']
+            langFlags: ['it', 'en', 'fr', 'de', 'nl', 'es', 'ja', 'ch', 'pt']
         }
     }
 }
