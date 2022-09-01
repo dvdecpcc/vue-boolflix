@@ -2,7 +2,7 @@
   <div>
     <ul>
         <li v-for="(movie, index) in movieList" :key="index"></li>
-            
+            {{movie.title}}
             {{movie.original_title}}
             {{movie.original_language}}
             {{movie.vote_average }}
@@ -19,6 +19,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>
