@@ -2,6 +2,7 @@
   <main>
     <ul class="myMovies">
         <li v-for="(movie, index) in movieList" :key="index">
+            <img :src="'https://image.tmdb.org/t/p/w300' + movie.poster_path" alt="movie.title">
             {{movie.title}}
             {{movie.original_title}}
             <img class="flag" v-if="langFlags.includes(movie.original_language)" :src="require('../assets/flags/' + movie.original_language + '.png')" alt="">
@@ -11,6 +12,8 @@
     </ul>
     <ul class="mySeries">
         <li v-for="(serie, index) in seriesList" :key="index">
+            <img :src="'https://image.tmdb.org/t/p/w300' + serie.poster_path" alt="serie.title">
+
             {{serie.name}}
             {{serie.original_name}}
             <img class="flag" v-if="langFlags.includes(serie.original_language)" :src="require('../assets/flags/' + serie.original_language + '.png')" alt="">
