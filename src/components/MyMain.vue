@@ -2,23 +2,27 @@
   <main>
     <ul class="myMovies">
         <li v-for="(movie, index) in movieList" :key="index">
-            <img :src="'https://image.tmdb.org/t/p/w300' + movie.poster_path" alt="movie.title">
+            <img :src="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="movie.title">
             {{movie.title}}
             {{movie.original_title}}
             <img class="flag" v-if="langFlags.includes(movie.original_language)" :src="require('../assets/flags/' + movie.original_language + '.png')" alt="">
             <span v-else>{{movie.original_language}}</span>
-            {{movie.vote_average }}
+            <div>
+                <i v-for="x in 5" class="fa-star" :class="(x>myVote(movie.vote_average))?'fa-regular':'fa-solid'" :key="x"></i>
+            </div>
         </li>    
     </ul>
     <ul class="mySeries">
         <li v-for="(serie, index) in seriesList" :key="index">
-            <img :src="'https://image.tmdb.org/t/p/w300' + serie.poster_path" alt="serie.title">
+            <img :src="'https://image.tmdb.org/t/p/w185' + serie.poster_path" alt="serie.title">
 
             {{serie.name}}
             {{serie.original_name}}
             <img class="flag" v-if="langFlags.includes(serie.original_language)" :src="require('../assets/flags/' + serie.original_language + '.png')" alt="">
             <span v-else>{{serie.original_language}}</span>
-            {{serie.vote_average }}
+             <div>
+                <i v-for="x in 5" class="fa-star" :class="(x>myVote(serie.vote_average))?'fa-regular':'fa-solid'" :key="x"></i>
+            </div>
         </li>    
     </ul>
   </main>
@@ -34,6 +38,11 @@ export default {
     data(){
         return {
             langFlags: ['it', 'en', 'fr', 'de', 'nl', 'es', 'ja', 'ch', 'pt']
+        }
+    },
+    methods: {
+        myVote(starredVote){
+            return Math.ceil(starredVote / 2);
         }
     }
 }
